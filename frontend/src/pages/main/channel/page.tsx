@@ -13,6 +13,7 @@ export const ChannelListPage = () => {
   const activeId = () => param.channelId;
   const setActiveId = (id: string) => {
     navigate(`${id}`);
+    console.log(222);
   };
 
   return (
