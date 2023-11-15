@@ -15,6 +15,13 @@ export type FriendListIconProps = {
   icon: JSX.Element;
   onClick?: () => void;
 };
+
+/**
+ * 这是好友列表的按钮，该按钮有点击事件，不过该事件在这里的使用，
+ * 没有给予
+ * @param props 
+ * @returns 
+ */
 const FriendListIcon = (props: FriendListIconProps) => (
   <button
     type={'button'}
@@ -29,6 +36,7 @@ type FriendListSectionTitleProps = {
   title: string;
   count?: number;
 };
+// 用于显示好友列表中的分组标题和可能的项目数量。
 const FriendSectionTitle = (props: FriendListSectionTitleProps) => (
   <div class={styles.sectionTitleContainer}>
     <span class={styles.sectionTitle.title}>
@@ -49,11 +57,27 @@ export type FriendListProps = {
   pinned?: FriendProfile[];
   nearBirthday?: FriendProfile[];
 }
+
+/**
+ * 
+ * @param props 
+ * @returns 
+ * 
+ * FriendList组件里面的header是好友列表页上面的添加按钮。
+ * 
+ * ScrollArea组件下的show组件里面是用户自己的头像组件
+ * 
+ * FriendSectionTitle组件显示的是过生日的好友
+ * 
+ * 显示好友的是ul标签下的内容
+ */
+
 export const FriendList = (props: FriendListProps) => {
   const [t] = useTransContext();
 
   return (
     <div class={styles.container}>
+
       <header class={styles.header}>
         <span class={styles.title}>
           {t('main.menu.friend.name')}
@@ -80,10 +104,12 @@ export const FriendList = (props: FriendListProps) => {
             </div>
           )}
         </Show>
+        88
         <FriendSectionTitle
           title={t('main.friend.near_birthday_friends')}
           count={props.nearBirthday?.length ?? 0}
         />
+        66
         <div class={styles.sectionContainer.horizontalWrapper}>
           <ScrollArea component={'ul'} class={styles.sectionContainer.horizontal} edgeSize={8}>
             <For each={props.nearBirthday}>

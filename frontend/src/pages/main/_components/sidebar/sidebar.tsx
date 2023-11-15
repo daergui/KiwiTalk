@@ -23,6 +23,12 @@ type SidebarButtonProps = {
   badge?: JSX.Element;
   onClick: () => void;
 };
+
+/**
+ * @description 导航按钮组件
+ * @param props 
+ * @returns 
+ */
 const SidebarButton = (props: SidebarButtonProps) => (
   <button
     type="button"
@@ -36,6 +42,9 @@ const SidebarButton = (props: SidebarButtonProps) => (
   </button>
 );
 
+/**
+ * @description 开关组件，用于显示侧边栏中的开关按钮
+ */
 type SidebarToggleProps = {
   isActive: boolean;
   setIsActive: (isActive: boolean) => void;
@@ -78,6 +87,7 @@ export type SidebarToggleType = {
   setIsActive: (isActive: boolean) => void;
 };
 
+
 type SidebarItemType = SidebarTabType | SidebarToggleType;
 type SidebarItemsProps = {
   activePath: string;
@@ -85,6 +95,9 @@ type SidebarItemsProps = {
   items: SidebarItemType[];
 };
 
+/**
+ * @description 用于显示侧边栏中的一组按钮和开关组件
+ */
 const SidebarItems = (props: SidebarItemsProps) => (
   <div class={styles.sidebarItems}>
     <For each={props.items}>
@@ -132,7 +145,7 @@ type SidebarProps = {
 
 export const Sidebar = (props: SidebarProps) => {
   const [itemsProps, local] = splitProps(
-    mergeProps({ notificationActive: false, onNotificationActive: () => {} }, props),
+    mergeProps({ notificationActive: false, onNotificationActive: () => { } }, props),
     ['activePath', 'setActivePath'],
   );
 
@@ -173,8 +186,11 @@ export const Sidebar = (props: SidebarProps) => {
 
   return (
     <aside class={styles.sidebar[props.collapsed ? 'collapsed' : 'default']}>
+      <span style="color:#fff;"></span>
       <SidebarItems items={topItems()} {...itemsProps} />
+      <span style="color:#fff;"></span>
       <Show when={!props.collapsed}>
+        <span style="color:#fff;"></span>
         <SidebarItems items={bottomItems()} {...itemsProps} />
       </Show>
     </aside>

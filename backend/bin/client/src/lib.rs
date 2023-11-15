@@ -141,6 +141,8 @@ async fn next_event(client: ClientState<'_>) -> TauriResult<Option<ClientEvent>>
     // 调用 poll_fn 宏，创建一个异步函数，返回一个 Result<Option<ClientEvent>, TauriError>
     Ok(poll_fn(|cx| {
         // 使用 client.with_mut 调用 Inner 结构体的 poll_recv 方法，尝试接收客户端事件
+        let poll_result = client.with_mut(|inner| inner.event_rx.poll_recv(cx));
+        println!("Poll Result: {:?}", poll_result);
         if let Ok(poll) = client.with_mut(|inner| inner.event_rx.poll_recv(cx)) {
             poll // 返回 poll 的结果
         } else {

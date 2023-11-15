@@ -15,6 +15,10 @@ export const ChannelListPage = () => {
     navigate(`${id}`);
   };
 
+  /**
+   * 在聊天列表页面中，又创建了一个嵌套路由视图，该视图渲染窗口
+   */
+
   return (
     <div class={styles.container}>
       <div class={styles.list}>

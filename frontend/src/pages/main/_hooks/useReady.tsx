@@ -83,10 +83,11 @@ export const ReadyProvider = (props: ReadyProviderProps) => {
 
   /**
    * @description 创建资源，处理自身判断事件流
+   * 该方法会在页面刷新的时候被调用
    */
   createResource(async () => {
     const stream = createSelfChannelEventStream();
-
+    console.log('createResource被调用', stream);
     try {
       for await (const event of stream) {
         props.onEvent?.({

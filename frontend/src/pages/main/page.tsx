@@ -49,6 +49,7 @@ export const MainPage = () => {
       <ReadyProvider onLogout={onLogout} onEvent={onEvent} onReady={() => setIsReady(true)}>
         <main class={styles.container}>
           <div class={styles.sidebarWrapper}>
+            000
             <Sidebar
               collapsed={false}
               activePath={activeTab()}
@@ -60,7 +61,9 @@ export const MainPage = () => {
               onNotificationActive={sidebar.setNotificationActive}
             />
           </div>
+          555
           <Outlet />
+          666
         </main>
       </ReadyProvider>
     </EventContext.Provider>
